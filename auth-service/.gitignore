@@ -1,0 +1,5 @@
+auth-service/Include/
+auth-service/Lib/
+auth-service/Scripts/
+pyvenv.cfg
+.env
