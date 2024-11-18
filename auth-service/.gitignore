@@ -3,3 +3,6 @@ auth-service/Lib/
 auth-service/Scripts/
 pyvenv.cfg
 .env
+__pycache__/
+*.pyc
+*.pyo
