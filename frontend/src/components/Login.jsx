@@ -24,6 +24,7 @@ const LoginComponent = ({ onSubmit }) =>{
                         type="text"
                         name="username"
                         className="form-control"
+                        placeholder="Username"
                         required
                     />
                 </div>
@@ -38,6 +39,7 @@ const LoginComponent = ({ onSubmit }) =>{
                         type="password"
                         name="password"
                         className="form-control"
+                        placeholder="Password"
                         required
                     />
                 </div>

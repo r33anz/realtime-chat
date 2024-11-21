@@ -2,21 +2,20 @@ import React from "react";
 import { FaUser,FaLock,FaEnvelope} from "react-icons/fa";
 
 const SignUpComponent = ({onSubmit}) =>{
-    
-    const handleSubmit = (e) =>{
+
+    const handleSignUp = (e) =>{
         e.preventDefault()
         const data = new FormData(e.target);
         const newUser = {
-        username: data.get('username'),
-        email: data.get('email'),
-        password: data.get('password'),
-        confirmPassword: data.get('confirmPassword'),
+            email: data.get('email'),
+            password: data.get('password'),
+            name: data.get('username')
         };
         onSubmit(newUser);
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignUp}>
       <div className="mb-3">
         <div className="input-group">
           <span className="input-group-text">
@@ -26,7 +25,7 @@ const SignUpComponent = ({onSubmit}) =>{
             type="text"
             name="username"
             className="form-control"
-            placeholder="Usuario"
+            placeholder="Username"
             required
           />
         </div>
@@ -40,7 +39,7 @@ const SignUpComponent = ({onSubmit}) =>{
             type="email"
             name="email"
             className="form-control"
-            placeholder="Correo electrónico"
+            placeholder="Mail"
             required
           />
         </div>
@@ -54,21 +53,7 @@ const SignUpComponent = ({onSubmit}) =>{
             type="password"
             name="password"
             className="form-control"
-            placeholder="Contraseña"
-            required
-          />
-        </div>
-      </div>
-      <div className="mb-3">
-        <div className="input-group">
-          <span className="input-group-text">
-            <FaLock />
-          </span>
-          <input
-            type="password"
-            name="confirmPassword"
-            className="form-control"
-            placeholder="Confirmar contraseña"
+            placeholder="Password"
             required
           />
         </div>

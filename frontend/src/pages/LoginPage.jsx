@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginComponent from "../components/Login";
 import SignUpComponent from "../components/SignUp";
+import { signup } from "../services/authServices";
 
 const LoginPage = ()=> {
     const [activeTab, setActiveTab] = useState('login');
@@ -12,9 +13,15 @@ const LoginPage = ()=> {
         navigate('/home');
     };
 
-    const handleSignup = (newUser) => {
-        console.log('Signup:', newUser);
-        navigate('/home');
+    const handleSignup = async (newUser) => {
+        try {
+            console.log('Signup:', newUser);
+            const data = await signup(newUser)
+            console.log('Usuario registrado:', data);
+            navigate('/home');
+        } catch (error) {
+            console.error('Error al registrarse',error);
+        }
     };
 
     return (
