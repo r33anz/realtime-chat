@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 PORT = os.getenv('PORT')
-HOST = os.getenv('HOST') 
+HOST = os.getenv('HOST')
 
 app = FastAPI()
 
