@@ -1,5 +1,5 @@
 from fastapi import status, HTTPException
-from src.dto.UserDto import UserResponse,UserCreate
+from src.dto.UserDto import UserCreate,UserLogin
 from src.services.UserService import UserService
 from sqlmodel import Session
 
@@ -12,3 +12,6 @@ class UserController:
             raise HTTPException(status_code=400, detail="Fail to create new user.")
         return newUser
         
+    @staticmethod
+    def loginUser(user: UserLogin, session: Session):
+        pass

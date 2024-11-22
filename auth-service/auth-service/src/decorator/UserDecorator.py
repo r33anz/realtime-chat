@@ -2,8 +2,7 @@ from functools import wraps
 from fastapi import HTTPException
 import re
 
-def validateEmail(func):
-    
+def validateEmail(func): 
     @wraps(func)
     def wrapper(*args,**kwargs):
 
