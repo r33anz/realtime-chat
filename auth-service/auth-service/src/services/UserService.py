@@ -57,12 +57,30 @@ class UserService:
 
     @staticmethod
     def loginUser(user: UserLogin, session: Session):
-        pass
+        userLogged = session.exec(select(User).where(User.email == user.email)).first()
+        if not userLogged:
+            raise HTTPException(status_code=401, detail="Invalid email.")
 
+        if not bcrypt.verify(user.password,userLogged.password):
+            raise HTTPException(status_code=401, detail="Password incorrect.")
+
+        userResponse = UserResponse(
+            email=userLogged.email,
+            name=userLogged.name,
+            createdAt=userLogged.createdAt,
+            updatedAt=userLogged.updatedAt
+        )
+
+        token = UserService.generateJWT(userLogged.email)
+
+        return AuthResponse(
+            user = userResponse,
+            token= token
+        )
+    
     @staticmethod
     def generateJWT(userEmail :str) -> str:
         secret_key = UserService.SECRET_KEY
-        print(secret_key,'AAAAAAAAA')
         payload = {
             "sub": userEmail,
             "exp": 60

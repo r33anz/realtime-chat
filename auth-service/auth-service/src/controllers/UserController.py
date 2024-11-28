@@ -14,4 +14,7 @@ class UserController:
         
     @staticmethod
     def loginUser(user: UserLogin, session: Session):
-        pass
+        userLogged = UserService.loginUser(user,session)
+        if not user:
+            raise HTTPException(status_code=400,detail='Failed to login')
+        return userLogged

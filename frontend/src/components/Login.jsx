@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUser,FaLock } from "react-icons/fa";
+import { FaUser,FaLock, FaEnvelope } from "react-icons/fa";
 
 const LoginComponent = ({ onSubmit }) =>{
 
@@ -7,7 +7,7 @@ const LoginComponent = ({ onSubmit }) =>{
         e.preventDefault();
         const data = new FormData(e.target);
         const credentials = {
-          username: data.get('username'),
+          email: data.get('email'),
           password: data.get('password'),
         };
         onSubmit(credentials);
@@ -18,13 +18,13 @@ const LoginComponent = ({ onSubmit }) =>{
             <div className="mb-3">
                 <div className="input-group">
                     <span className="input-group-text">
-                        <FaUser/>
+                        <FaEnvelope/>
                     </span>
                     <input
                         type="text"
-                        name="username"
+                        name="email"
                         className="form-control"
-                        placeholder="Username"
+                        placeholder="Mail"
                         required
                     />
                 </div>

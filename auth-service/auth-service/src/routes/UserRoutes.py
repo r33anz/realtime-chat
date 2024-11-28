@@ -15,4 +15,5 @@ def createUser(user : UserCreate , session: Session = Depends(get_session)):
 
 @router.post('/login')
 def loginUser(user:UserLogin, session: Session = Depends(get_session)):
-    pass
+    print(user)
+    return UserController.loginUser(user,session)

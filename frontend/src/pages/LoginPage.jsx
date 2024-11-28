@@ -2,22 +2,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginComponent from "../components/Login";
 import SignUpComponent from "../components/SignUp";
-import { signup } from "../services/authServices";
+import { signup,login } from "../services/authServices";
 
 const LoginPage = ()=> {
     const [activeTab, setActiveTab] = useState('login');
     const navigate = useNavigate();
-
-    const handleLogin = (credentials) => {
-        console.log('Login:', credentials);
-        navigate('/home');
-    };
 
     const handleSignup = async (newUser) => {
         try {
             console.log('Signup:', newUser);
             const data = await signup(newUser)
             console.log('Usuario registrado:', data);
+            navigate('/home');
+        } catch (error) {
+            console.error('Error al registrarse',error);
+        }
+    };
+
+    const handleLogin = async (userData) => {
+        try {
+            console.log('Loggin:', userData);
+            const data = await login(userData)
+            console.log('Usuario loggeado:', data);
             navigate('/home');
         } catch (error) {
             console.error('Error al registrarse',error);
